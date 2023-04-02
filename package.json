@@ -1,0 +1,20 @@
+{
+  "name": "Comicsmith",
+  "version": "1.0.0",
+  "description": "AI to generate comics from text prompts",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "AI",
+    "Comics"
+  ],
+  "author": "Praise James",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  }
+}
