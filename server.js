@@ -70,7 +70,7 @@ function generateC(text){
 	const data = {
 		'model':'image-alpha-001',
 		'prompt':`Generate a comic with speech bubbles: ${text}`,
-		'num_images':1,
+		'num_images':1, to
 		'size':'256x256',
 		'response_format':'url',
 		'extra_text': ['Speech bubble 1', 'Speech bubble 2']
@@ -80,7 +80,7 @@ function generateC(text){
 		'Content-Type':'application/json',
 		'Authorization':`Bearer ${api_key}`
 	}
-	const response = await axios.post(url, data, { headers });
+	const response = axios.post(url, data, { headers });
 	const image = response.data.data[0].url;
 	const speechBubbles = response.data.data[0].extra_text;
 
