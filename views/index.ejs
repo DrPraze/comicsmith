@@ -105,15 +105,9 @@
           </div>
         </div>
         <div class="col-lg-12">
-        <form method="POST" enctype="multipart/form-data" action="generate-comic">
+        <form method="POST" enctype="multipart/form-data" action="generate">
           <label for="prompt">Story Prompt:</label>
           <input type="text" id="prompt" name="prompt" placeholder="Enter story prompt"><br>
-
-          <label for="dialogue">Dialogue Prompt:</label>
-          <input type="text" id="dialogue" name="dialogue" placeholder="Enter dialogue prompt"><br>
-
-          <label for="dialogue">Style Prompt:</label>
-          <input type="text" id="dialogue" name="dialogue" placeholder="Describe drawing style"><br>
 
           <!-- <label for="num_panels">Number of Panels:</label>
           <input type="number" id="num_panels" name="num_panels" min="1" max="5" value="3"><br>
@@ -126,9 +120,7 @@
 
           <input type="submit" value="Generate Comic" style="  font-size: 14px; color: #fff; background-color: rgb(255 127 39 / 1);border: 1px solid rgb(83 244 252);padding: 12px 30px;display: inline-block;border-radius: 25px;font-weight: 500;text-transform: capitalize;letter-spacing: 0.5px;transition: all .3s;position: relative;overflow: hidden;">
         </form>
-        {% if image %}
-          <img src="{{ image }}">
-        {% endif %}
+        <%= comic %>
         </div>
         </div>
       </div>
