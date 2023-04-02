@@ -63,7 +63,7 @@ async function generateTextAndImage(prompt, model, api_key){
 }
 
 //generating an image that has speech bubbles with DALL-E 2
-async function generateC(text){
+function generateC(text){
 	const api_key = DALLE_API_KEY;
 	const url = 'https://api.openai.com/v2/images/generations';
 
@@ -92,7 +92,7 @@ async function generateC(text){
 
 app.post('/generate', function(req, res, next){
 	const { prompt } = req.query.text;
-	const { c, extra } = await generateC(prompt);
+	const { c, extra } = generateC(prompt);
 	return res.render('index.ejs', {comic:c});
 });
 
