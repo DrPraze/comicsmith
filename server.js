@@ -70,7 +70,7 @@ function generateC(text){
 	const data = {
 		'model':'image-alpha-001',
 		'prompt':`Generate a comic with speech bubbles: ${text}`,
-		'num_images':1, to
+		'num_images':1,
 		'size':'256x256',
 		'response_format':'url',
 		'extra_text': ['Speech bubble 1', 'Speech bubble 2']
