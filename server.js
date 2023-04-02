@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 
-const GPT_API_KEY = 'your_gpt_api_key_here';
-const DALLE_API_KEY = 'your_dalle_api_key_here';
+const GPT_API_KEY = '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';
+const DALLE_API_KEY = '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';
 
 //------------ EJS Configuration ------------//
 app.set('view engine', 'ejs');
