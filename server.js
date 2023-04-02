@@ -93,7 +93,7 @@ async function generateC(text){
 app.post('/generate', function(req, res, next){
 	const { prompt } = req.query.text;
 	const { c, extra } = await generateC(prompt);
-	return res.render('index.js', {comic:c});
+	return res.render('index.ejs', {comic:c});
 });
 
 
