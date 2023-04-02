@@ -77,7 +77,7 @@ async function generateC(text){
 	}
 
 	const headers = {
-		'Content-Type', 'application/json',
+		'Content-Type':'application/json',
 		'Authorization':`Bearer ${api_key}`
 	}
 	const response = await axios.post(url, data, { headers });
