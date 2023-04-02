@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Comicsmith | Generate comics with AI based on text inputs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="static/assets/css/style.css">
+    <link rel="stylesheet" href="static/assets/css/owl.css">
+    <link rel="stylesheet" href="static/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** 
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+   ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="static/assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html" class="active">Home</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h4>Welcome To Comicsmith</h4>
+                  <h6><em>Create</em> comics based on simple text descriptions with AI</h6>
+                  <div class="main-button">
+                    <a href="#generate">Generate now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+  <br>
+  <br>
+  <br>
+  <div id="generate">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>Generate <em>Your Comic</em> Here.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+        <form method="POST" enctype="multipart/form-data" action="generate-comic">
+          <label for="prompt">Story Prompt:</label>
+          <input type="text" id="prompt" name="prompt" placeholder="Enter story prompt"><br>
+
+          <label for="dialogue">Dialogue Prompt:</label>
+          <input type="text" id="dialogue" name="dialogue" placeholder="Enter dialogue prompt"><br>
+
+          <label for="dialogue">Style Prompt:</label>
+          <input type="text" id="dialogue" name="dialogue" placeholder="Describe drawing style"><br>
+
+          <!-- <label for="num_panels">Number of Panels:</label>
+          <input type="number" id="num_panels" name="num_panels" min="1" max="5" value="3"><br>
+
+          <label for="panel_layout">Panel Layout:</label>
+          <select id="panel_layout" name="panel_layout">
+            <option value="horizontal" selected>Horizontal</option>
+            <option value="vertical">Vertical</option>
+          </select><br> -->
+
+          <input type="submit" value="Generate Comic" style="  font-size: 14px; color: #fff; background-color: rgb(255 127 39 / 1);border: 1px solid rgb(83 244 252);padding: 12px 30px;display: inline-block;border-radius: 25px;font-weight: 500;text-transform: capitalize;letter-spacing: 0.5px;transition: all .3s;position: relative;overflow: hidden;">
+        </form>
+        {% if image %}
+          <img src="{{ image }}">
+        {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2023. <a href="#"> There's a joke here somewhere </a>. All rights reserved. 
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="static/assets/js/isotope.min.js"></script>
+  <script src="static/assets/js/owl-carousel.js"></script>
+  <script src="static/assets/js/tabs.js"></script>
+  <script src="static/assets/js/popup.js"></script>
+  <script src="static/assets/js/custom.js"></script>
+
+
+  </body>
+
+</html>
