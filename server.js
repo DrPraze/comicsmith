@@ -117,17 +117,9 @@ async function addSpeechBubbles(comicData){
 
 
 app.post('/generate', function(req, res, next){
-	const { prompt } = req.body;
-	const caption = await generateCaption(prompt);
-	const imageBuffer = await generateImage(caption);
-
-	if (imageBuffer){
-		res.writeHead(200, {'Content-type': 'image/png'});
-		res.end(imageBuffer);
-	} else {
-		res.status(500).send('Failed to generate image');
-	}
-	return res.render('index.js', {comic:generated_comic});
+	const { prompt } = req.query.text;
+	const { c, extra } = await generateC(prompt);
+	return res.render('index.js', {comic:c});
 });
 
 
