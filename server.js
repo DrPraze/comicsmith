@@ -87,33 +87,7 @@ async function generateC(text){
 	return { image, speechBubbles }
 
 }
-//Add speech bubbles to generated comics
-async function addSpeechBubbles(comicData){
-	//Loadspeech bubble image
-	const speechBubbleImage = await loadImage('speech-bubble.png');
-	const speechBubbleWidth = 250;
-	const speechBubbleHeight = 150;
-	//Add speech panel to each panel
-	for (let i=0, i<comicData.length; i++){
-		//Panel coordinatesa
-		const panel = comicData[i];
-		const panelX = panel.left;
-		const panelY = panel.top;
-		const panelWidth = panel.right - panel.left;
-		const panelHeight = panel.bottom - panel.top
 
-		//Calculate speech bubble position and size
-		const speechBubbleX = panelX + panelWidth - speechBubbleWidth;
-		const speechBubbleY = panelY + panelHeight - speechBubbleHeight;
-
-		//Draw speech bubble and text
-		ctx.drawImage(speechBubbleImage, speechBubbleX, speechBubbleY, speechBubbleWidth, speechBubbleHeight);
-		ctx.fillStyle = 'black';
-		ctx.font = 'bold 20px Arial';
-		ctx.fillText(panel.caption, speechBubbleX + 20, speechBubbleY + 50);
-	}
-	return canvas;
-}
 
 
 app.post('/generate', function(req, res, next){
