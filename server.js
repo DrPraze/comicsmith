@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: false}))
 //------------ Routes ------------//
 // app.use('/', require('./routes/index'));
 app.get('/', function (req, res, next) {
-	return res.render('index.ejs');
+	return res.render('index.ejs', {"comic":""});
 });
 
 
