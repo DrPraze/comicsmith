@@ -91,7 +91,7 @@ function generateC(text){
 
 
 app.post('/generate', function(req, res, next){
-	const { prompt } = req.query.text;
+	const { prompt } = req.query.prompt;
 	const { c, extra } = generateC(prompt);
 	return res.render('index.ejs', {"comic":c});
 });
