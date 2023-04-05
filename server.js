@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const sharp = require('sharp');
 const FormData = require('form-data');
+const path = require('path')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
