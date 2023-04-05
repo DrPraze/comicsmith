@@ -34,60 +34,63 @@ app.get('/', function (req, res, next) {
 
 
 //generate text and image
-async function generateTextAndImage(prompt, model, api_key){
-	const gptResponse = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions',
-			{prompt,
-				max_tokens: 150,
-				temperature: 0.7,
-				n: 1,
-				stop: '###'},
-				{headers:{Authorization: `Bearer ${GPT_API_KEY}`}})
-	const text = gptResponse.data.choices[0].text.trim();
+function generateTextAndImage(prompt, model, api_key){
+    return axios.post('https://api.openai.com/v1/engines/davinci-codex/completions',
+            {prompt,
+                max_tokens: 150,
+                temperature: 0.7,
+                n: 1,
+                stop: '###'},
+                {headers:{Authorization: `Bearer ${GPT_API_KEY}`}})
+    .then(function(gptResponse) {
+        const text = gptResponse.data.choices[0].text.trim();
 
-	const dalleResponse = await axios.post('https://api.openai.com/v1/images/generations',
-			{model: 'image-alpha-001',
-			api_key: DALLE_API_KEY,
-			prompt: text,
-			size:"512x512",
-			response_format:'url',
-		});
-	const imageUrl = dalleResponse.data.data[0].url;
-	const imageData = await axios.get(imageUrl,
-		{responseType: "arraybuffer"})
-	
-	const image = await sharp(imageData.data)
-		.composite([{input: 'speech-bubble.png', gravity: 'southeast'}])
-		.toBuffer();
-
-	return { text, image };
+        return axios.post('https://api.openai.com/v1/images/generations',
+                {model: 'image-alpha-001',
+                api_key: DALLE_API_KEY,
+                prompt: text,
+                size:"512x512",
+                response_format:'url',
+            })
+        .then(function(dalleResponse) {
+            const imageUrl = dalleResponse.data.data[0].url;
+            return axios.get(imageUrl, {responseType: "arraybuffer"})
+            .then(function(imageData) {
+                return sharp(imageData.data)
+                    .composite([{input: 'speech-bubble.png', gravity: 'southeast'}])
+                    .toBuffer()
+                    .then(function(image) {
+                        return { text, image };
+                    })
+            })
+        })
+    });
 }
 
-//generating an image that has speech bubbles with DALL-E 2
 function generateC(text){
-	const api_key = DALLE_API_KEY;
-	const url = 'https://api.openai.com/v2/images/generations';
+    const api_key = DALLE_API_KEY;
+    const url = 'https://api.openai.com/v2/images/generations';
 
-	const data = {
-		'model':'image-alpha-001',
-		'prompt':`Generate a comic with speech bubbles: ${text}`,
-		'num_images':1,
-		'size':'256x256',
-		'response_format':'url',
-		'extra_text': ['Speech bubble 1', 'Speech bubble 2']
-	}
+    const data = {
+        'model':'image-alpha-001',
+        'prompt':`Generate a comic with speech bubbles: ${text}`,
+        'num_images':1,
+        'size':'256x256',
+        'response_format':'url',
+        'extra_text': ['Speech bubble 1', 'Speech bubble 2']
+    }
 
-	const headers = {
-		'Content-Type':'application/json',
-		'Authorization':`Bearer ${api_key}`
-	}
-	const response = axios.post(url, data, { headers });
-	const image = response.data.data[0].url;
-	const speechBubbles = response.data.data[0].extra_text;
-
-	return { image, speechBubbles }
-
+    const headers = {
+        'Content-Type':'application/json',
+        'Authorization':`Bearer ${api_key}`
+    }
+    return axios.post(url, data, { headers })
+    .then(function(response) {
+        const image = response.data.data[0].url;
+        const speechBubbles = response.data.data[0].extra_text;
+        return { image, speechBubbles };
+    });
 }
-
 
 
 app.get('/generate', function(req, res, next){
