@@ -55,7 +55,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/views'));
 
-app.get('/', function (req, res) => {
+app.get('/', function (req, res) {
         return res.render('index.ejs', {"comic":""});
 });
 app.get('/generate', async (req, res) => {
