@@ -7,7 +7,7 @@ const path = require('path')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DALLE_API_KEY = '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';
+const DALLE_API_KEY = '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';
 
 async function generateTextAndImage(text) {
   const url = 'https://api.openai.com/v1/images/generations';
