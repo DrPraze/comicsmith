@@ -5,7 +5,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DALLE_API_KEY = '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';
+const DALLE_API_KEY = 'DALLE API Key';
 
 // EJS Configuration
 app.set('view engine', 'ejs');
